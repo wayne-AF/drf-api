@@ -2,9 +2,9 @@ from django.http import Http404
 from django.shortcuts import render
 from rest_framework import status
 from rest_framework.views import APIView
-# could use django's httpresponse but the response class is specifically built for the rest framework and 
-# provides a nicer interface for returning content-negotiated web api responses that can be
-# rendered to multiple formats
+# could use django's httpresponse but the response class is specifically built
+# for the rest framework and provides a nicer interface for returning content-
+# negotiated web api responses that can be rendered to multiple formats
 from rest_framework.response import Response
 from .models import Profile
 from .serializers import ProfileSerializer
@@ -15,14 +15,16 @@ from drf_api.permissions import IsOwnerOrReadOnly
 class ProfileList(APIView):
     """
     List all profiles
-    No Create view (post method) as profile creation is handled by Django signals
+    No Create view (post method) as profile creation is handled by Django 
+    signals
     """
     def get(self, request):
         # returning all the profiles
         profiles = Profile.objects.all()
         # serialising all the profiles
         serializer = ProfileSerializer(
-            # context part allows us to access request object from inside serializer
+            # context part allows us to access request object from inside
+            # serializer
             profiles, many=True, context={'request': request}
             )
         # sending serialised data in the response
@@ -60,3 +62,4 @@ class ProfileDetail(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        

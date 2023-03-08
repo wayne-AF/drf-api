@@ -10,8 +10,8 @@ class PostSerializer(serializers.ModelSerializer):
 
     # validating image properties using rest framework's field level
     # validation method
-    # using this naming convetion, this method will be called automatically
-    # and valudate teh uploaded image every time we create or update a post
+    # using this naming convention, this method will be called automatically
+    # and valudate the uploaded image every time we create or update a post
     def validate_image(self, value):
         # checking if file size is bigger than 2mb limit
         if value.size > 1024 * 1024 * 2:

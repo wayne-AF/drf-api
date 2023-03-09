@@ -23,4 +23,5 @@ urlpatterns = [
     # path('profiles/', include('profiles.urls')),
     path('', include('profiles.urls')),
     path('', include('posts.urls')),
+    path('', include('comments.urls')),
 ]

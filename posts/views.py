@@ -73,7 +73,6 @@ class PostDetail(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_404_BAD_REQUEST)
 
-
     def delete(self, request, pk):
         post = self.get_object(pk)
         post.delete()

@@ -13,6 +13,8 @@ class LikeList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 
+# don't need to include Update as part of the extended view here because
+# we don't need to update likes
 class LikeDetail(generics.RetrieveDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = LikeSerializer

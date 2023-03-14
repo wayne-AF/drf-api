@@ -13,8 +13,8 @@ class Profile(models.Model):
         upload_to='images/', default='../default_profile_eedkvl'
     )
 
-    # creating a meta class that will return Profile instances in reverse order,
-    # so the most recently created is first
+    # creating a meta class that will return Profile instances in reverse
+    # order, so the most recently created is first
     class Meta:
         # minus sign indicates we want the results in reverse
         ordering = ['-created_at']
@@ -28,5 +28,6 @@ def create_profile(sender, instance, created, **kwargs):
         Profile.objects.create(owner=instance)
 
 
-# listen for the post_save signal coming from the User model by calling the connect function
+# listen for the post_save signal coming from the User model 
+# by calling the connect function
 post_save.connect(create_profile, sender=User)
